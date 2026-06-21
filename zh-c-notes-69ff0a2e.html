@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊猫体育 · 信息索引与资料整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(145deg, #fce9d8 0%, #f7d9c4 40%, #f3cbb0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.7;
+            color: #2d2a24;
+        }
+
+        .page-card {
+            max-width: 880px;
+            width: 100%;
+            background: rgba(255, 252, 245, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 40px;
+            box-shadow: 0 12px 40px rgba(140, 90, 60, 0.18);
+            padding: 2.8rem 2.4rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #4c3a2a;
+            margin-bottom: 0.4rem;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #7f6b58;
+            border-left: 5px solid #dbb594;
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #4f3d2d;
+            margin-top: 2.2rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 2px solid #e6cfbb;
+            display: inline-block;
+        }
+
+        p {
+            margin: 0.9rem 0 1.2rem 0;
+        }
+
+        .highlight-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.6rem 0 0.8rem;
+        }
+
+        .highlight-item {
+            background: #f3e6db;
+            border-radius: 40px;
+            padding: 0.5rem 1.4rem;
+            font-size: 0.95rem;
+            font-weight: 450;
+            color: #3e3228;
+            box-shadow: 0 2px 6px rgba(160, 110, 75, 0.08);
+            transition: background 0.15s, transform 0.1s;
+            cursor: default;
+        }
+
+        .highlight-item:hover {
+            background: #ecdaca;
+            transform: translateY(-2px);
+        }
+
+        .scene-list {
+            list-style: none;
+            margin: 1rem 0 1.2rem;
+        }
+
+        .scene-list li {
+            background: #f7eee6;
+            margin: 0.5rem 0;
+            padding: 0.6rem 1.2rem 0.6rem 2rem;
+            border-radius: 30px;
+            position: relative;
+            font-size: 0.98rem;
+        }
+
+        .scene-list li::before {
+            content: "📌";
+            position: absolute;
+            left: 0.6rem;
+            top: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .faq-tile {
+            background: #f5ede5;
+            border-radius: 28px;
+            padding: 1rem 1.4rem;
+            margin: 1rem 0;
+        }
+
+        .faq-tile summary {
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #4c3a2a;
+            padding: 0.2rem 0;
+        }
+
+        .faq-tile p {
+            margin: 0.6rem 0 0.2rem;
+            font-size: 0.95rem;
+            color: #4a3f36;
+        }
+
+        .link-sentence {
+            background: #f1e3d7;
+            border-radius: 40px;
+            padding: 1rem 1.8rem;
+            margin: 1.8rem 0 0.8rem;
+            font-size: 1.05rem;
+            display: inline-block;
+            width: auto;
+            box-shadow: 0 2px 8px rgba(140, 90, 60, 0.08);
+        }
+
+        .link-sentence a {
+            color: #7f543c;
+            background: #fff3ea;
+            padding: 0.15rem 0.9rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.15s, color 0.15s;
+            border: 1px solid #dbb594;
+            white-space: nowrap;
+        }
+
+        .link-sentence a:hover {
+            background: #dbb594;
+            color: #2d1f16;
+            border-color: #b8886a;
+        }
+
+        .note-box {
+            background: #efe2d6;
+            border-radius: 28px;
+            padding: 1rem 1.6rem;
+            margin-top: 1.8rem;
+            font-size: 0.92rem;
+            color: #4f3d2d;
+            border-left: 5px solid #c6a488;
+            line-height: 1.6;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d7c0ad, transparent);
+            margin: 2rem 0 1rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #8f7b69;
+            margin-top: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .page-card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 28px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .subhead {
+                font-size: 0.95rem;
+                padding-left: 0.7rem;
+            }
+            .highlight-grid {
+                gap: 0.6rem;
+            }
+            .highlight-item {
+                font-size: 0.85rem;
+                padding: 0.3rem 1rem;
+            }
+            .link-sentence {
+                font-size: 0.95rem;
+                padding: 0.8rem 1.2rem;
+            }
+            .link-sentence a {
+                padding: 0.1rem 0.6rem;
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-card">
+        <h1>📋 熊猫体育 · 资料整理</h1>
+        <div class="subhead">基于公开信息索引 · 内容概要 · 使用场景参考</div>
+
+        <p>
+            <strong>熊猫体育</strong> 是一个以体育资讯与数据整理为核心的平台。以下内容是根据公开资料、用户反馈及功能描述梳理的信息摘要，旨在提供相对清晰的结构化参考，方便快速了解平台定位与基本用途。
+        </p>
+
+        <h2>📌 内容亮点</h2>
+        <div class="highlight-grid">
+            <span class="highlight-item">⚽ 赛事信息索引</span>
+            <span class="highlight-item">🏀 数据归纳</span>
+            <span class="highlight-item">🎾 活动整理</span>
+            <span class="highlight-item">🏐 分类浏览</span>
+            <span class="highlight-item">📊 统计摘要</span>
+        </div>
+        <p>
+            平台将各类体育项目相关的资讯、赛程、结果等公开内容进行归类与展示，便于用户按兴趣或时间线查阅。整体信息组织偏向实用与简洁。
+        </p>
+
+        <h2>🧩 常见使用场景</h2>
+        <ul class="scene-list">
+            <li><strong>赛前参考</strong> – 浏览即将进行的赛事列表，了解时间与对阵信息。</li>
+            <li><strong>赛后回顾</strong> – 查阅已结束赛事的比分、数据摘要或简要报道。</li>
+            <li><strong>横向比较</strong> – 在同一页面中对比不同联赛或项目的统计数据。</li>
+            <li><strong>日常浏览</strong> – 作为体育资讯的补充信息源，了解趋势与动态。</li>
+        </ul>
+
+        <h2>💡 使用建议</h2>
+        <p>
+            建议将 <strong>熊猫体育</strong> 作为信息参考渠道之一，与其他来源交叉对照，以获得更全面的视角。平台内容更新频率与覆盖范围可能随运营调整，请以实际页面为准。初次使用时，可从热门赛事或最新动态栏目开始浏览。
+        </p>
+
+        <h2>❓ 常见疑问摘要</h2>
+        <div class="faq-tile">
+            <details>
+                <summary>平台内容是否实时更新？</summary>
+                <p>更新频率视赛事与数据源而定，多数内容按日或按轮次同步，但具体时效性建议以页面标注为准。</p>
+            </details>
+        </div>
+        <div class="faq-tile">
+            <details>
+                <summary>是否需要注册才能浏览？</summary>
+                <p>根据公开访问情况，大部分信息可直接查阅，部分个性化功能可能需要账户支持，以实际页面提示为准。</p>
+            </details>
+        </div>
+        <div class="faq-tile">
+            <details>
+                <summary>内容覆盖哪些体育项目？</summary>
+                <p>涵盖足球、篮球、网球、排球等常见项目，也会根据赛季或热点临时增加专项分类。</p>
+            </details>
+        </div>
+
+        <div class="link-sentence">
+            📎 如需直接浏览完整信息，可前往 <a href="https://zh-c-pandasports.com">熊猫体育</a> 页面查阅最新内容。
+        </div>
+
+        <hr>
+        <div class="note-box">
+            ⚠️ 说明：本页为第三方整理的介绍性资料摘要，所有信息基于公开渠道获取，仅供了解参考。平台运营方、内容准确性及可用性以实际站点为准。
+        </div>
+
+        <div class="footer-note">
+            资料整理 · 信息索引 · 非官方页面
+        </div>
+    </div>
+</body>
+</html>
