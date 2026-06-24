@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 中文应用站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f7fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1d2b3a;
+            padding: 1.5rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 主题色点缀 */
+        :root {
+            --teal: #0b8a8a;
+            --teal-light: #d9f2f2;
+            --teal-muted: #b0d6d6;
+            --blue-deep: #1a5c6e;
+            --card-bg: #ffffff;
+            --soft-shadow: 0 8px 28px rgba(0, 50, 50, 0.06);
+        }
+
+        /* hero 开场短句 */
+        .hero {
+            margin: 1.2rem 0 2.4rem;
+            padding: 2.4rem 1.6rem;
+            background: linear-gradient(145deg, #e2f3f5 0%, #f0fafb 100%);
+            border-radius: 32px;
+            box-shadow: var(--soft-shadow);
+            border-left: 6px solid var(--teal);
+            transition: all 0.2s;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 480;
+            letter-spacing: 0.02em;
+            color: #0b2e3a;
+            max-width: 700px;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .byline {
+            font-size: 1rem;
+            color: #3b5f6b;
+            border-top: 1px solid var(--teal-muted);
+            padding-top: 0.75rem;
+            margin-top: 0.75rem;
+            display: inline-block;
+        }
+
+        /* 承接段落 */
+        .context {
+            background: var(--card-bg);
+            padding: 2rem 1.8rem;
+            border-radius: 28px;
+            box-shadow: var(--soft-shadow);
+            margin-bottom: 2.4rem;
+        }
+
+        .context p {
+            margin-bottom: 0.9rem;
+            font-size: 1.05rem;
+            max-width: 780px;
+            color: #1f3540;
+        }
+
+        .context strong {
+            color: var(--teal);
+            font-weight: 550;
+        }
+
+        /* 网格卡片 · 特点列表 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 1.8rem 1.2rem 1.5rem;
+            box-shadow: 0 4px 14px rgba(0, 70, 80, 0.04);
+            border: 1px solid #e5f0f0;
+            transition: 0.25s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--teal);
+            box-shadow: 0 8px 26px rgba(11, 138, 138, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .feature-card .num {
+            width: 40px;
+            height: 40px;
+            background: var(--teal-light);
+            border-radius: 40px 12px 40px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--blue-deep);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+            color: #14343f;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #2a4b58;
+            line-height: 1.5;
+        }
+
+        /* 使用场景区块 (提炼摘要感) */
+        .scene-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            background: #f4fbfc;
+            padding: 1.8rem 1.6rem;
+            border-radius: 28px;
+            margin: 1.8rem 0 2.5rem;
+        }
+
+        .scene-item {
+            flex: 1 1 180px;
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem 1rem;
+            box-shadow: 0 2px 10px rgba(0,50,55,0.02);
+            border-left: 4px solid var(--teal);
+        }
+
+        .scene-item .emoji-place {
+            font-size: 1.6rem;
+            opacity: 0.4;
+            margin-right: 6px;
+        }
+
+        .scene-item strong {
+            display: block;
+            font-weight: 560;
+            color: #0b4a55;
+            margin-bottom: 0.2rem;
+        }
+
+        .scene-item span {
+            font-size: 0.9rem;
+            color: #2d5b66;
+        }
+
+        /* 温和结尾 + 链接 */
+        .closing {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem 1.8rem 2.2rem;
+            box-shadow: var(--soft-shadow);
+            margin: 2rem 0 2.5rem;
+            border-bottom: 4px solid var(--teal);
+        }
+
+        .closing p {
+            font-size: 1.05rem;
+            color: #1a3b44;
+            max-width: 750px;
+            margin-bottom: 0.8rem;
+        }
+
+        .closing a {
+            color: #096b6b;
+            text-decoration: none;
+            font-weight: 550;
+            border-bottom: 1.5px dotted var(--teal);
+            transition: border 0.2s, background 0.1s;
+            padding: 0 2px;
+        }
+
+        .closing a:hover {
+            border-bottom: 2px solid var(--teal);
+            background: #e4f7f7;
+            border-radius: 2px;
+        }
+
+        /* FAQ 摘要（简洁） */
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.5rem;
+            margin: 1.8rem 0 1.2rem;
+            padding: 0 0.2rem;
+        }
+
+        .faq-mini dt {
+            font-weight: 550;
+            color: #0a5560;
+            font-size: 0.95rem;
+            flex: 0 0 100px;
+        }
+
+        .faq-mini dd {
+            color: #254f5a;
+            font-size: 0.95rem;
+            flex: 1;
+            min-width: 180px;
+            padding: 0.2rem 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 1.5px solid #cde3e3;
+            margin: 1.2rem 0;
+        }
+
+        /* 移动端精细调整 */
+        @media (max-width: 640px) {
+            body { padding: 0.8rem; }
+            .hero p { font-size: 1.3rem; }
+            .context { padding: 1.5rem; }
+            .feature-grid { gap: 1rem; }
+            .feature-card { padding: 1.4rem 1rem; }
+            .closing { padding: 1.5rem; }
+            .scene-item { flex: 1 1 140px; }
+        }
+
+        @media (max-width: 420px) {
+            .hero { padding: 1.5rem 1rem; }
+            .faq-mini dt { flex: 0 0 80px; }
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #5d7c84;
+            text-align: center;
+            padding: 1rem 0 0.2rem;
+            border-top: 1px solid #d2e4e6;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 开场短句 hero -->
+    <div class="hero">
+        <p>一个经过整理的中文应用信息站点，<br>围绕实用与轻量体验展开。</p>
+        <div class="byline">始于工具 · 不止于工具</div>
+    </div>
+
+    <!-- 承接段落：站点介绍与可信说明 -->
+    <div class="context">
+        <p><strong>爱游戏</strong> 是一个聚焦中文应用场景的信息整合入口。不同于泛娱乐或大型平台，这里更关注应用本身的实用逻辑与内容可及性——从基础功能到场景延伸，均保持适度的信息颗粒度。</p>
+        <p>站点内容基于公开资料与长期使用观察进行梳理，不预设偏好，也不夸大覆盖范围。每个条目都经过基础核验，力求减少信息磨损。以下列举几个特征维度，帮助快速建立认知。</p>
+    </div>
+
+    <!-- 特点列表 (网格卡片) -->
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="num">01</div>
+            <h3>精简目录</h3>
+            <p>按应用类别与使用频率组织，避免无关堆砌。每个类别仅收录具有代表性的选项。</p>
+        </div>
+        <div class="feature-card">
+            <div class="num">02</div>
+            <h3>场景标注</h3>
+            <p>明确标注每项工具的主要使用场景与局限性，辅助判断是否匹配自身需求。</p>
+        </div>
+        <div class="feature-card">
+            <div class="num">03</div>
+            <h3>版本说明</h3>
+            <p>标注大致更新周期与兼容性提示，减少因版本差异造成的信息误差。</p>
+        </div>
+        <div class="feature-card">
+            <div class="num">04</div>
+            <h3>索引结构</h3>
+            <p>采用分层索引，支持快速定位具体应用或同类替代方案，节约浏览时间。</p>
+        </div>
+    </div>
+
+    <!-- 场景快照 (自然过渡) -->
+    <div class="scene-wrap">
+        <div class="scene-item">
+            <strong>日常查询</strong>
+            <span>词典、汇率、天气等轻量工具，无需反复安装。</span>
+        </div>
+        <div class="scene-item">
+            <strong>内容阅读</strong>
+            <span>聚合RSS、笔记、稍后读，保持信息流简洁。</span>
+        </div>
+        <div class="scene-item">
+            <strong>效率辅助</strong>
+            <span>计算、转换、待办，降低操作步骤。</span>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 与 提示 -->
+    <div class="faq-mini" style="list-style:none;">
+        <dt>内容来源？</dt>
+        <dd>基于公开应用商店及开发者站点信息，结合长期使用记录。</dd>
+        <dt>是否更新？</dt>
+        <dd>每季度进行常规刷新，重大变更随时调整。</dd>
+        <dt>推荐原则？</dt>
+        <dd>不设商业排名，仅依据功能完整性与稳定性做基础筛选。</dd>
+    </div>
+
+    <hr>
+
+    <!-- 温和结尾 + 嵌入链接 (严格符合“爱游戏”文本) -->
+    <div class="closing">
+        <p>如果你希望进一步了解或使用经过整理的应用信息，可以前往 <a href="https://chineseapp-igame.com">爱游戏</a> 浏览具体目录。站点保持轻量化结构，没有弹窗或强制引导，所有内容均可直接查阅。</p>
+        <p>信息总在变化，建议结合自身判断与实际体验做选择。本站只是一个相对安静的出发点。</p>
+    </div>
+
+    <div class="footer-note">
+        <span>— 页面内容仅供信息参考 · 保持开放 —</span>
+    </div>
+
+</div>
+</body>
+</html>
